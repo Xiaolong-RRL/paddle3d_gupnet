@@ -33,9 +33,9 @@
 
 2. Download the pre training weights of dla34 to the checkpoint folder
 
-> 链接：https://pan.baidu.com/s/1NTqgwaBAq2jP2YJ_X8cmzw?pwd=swxl
+> link：https://pan.baidu.com/s/1NTqgwaBAq2jP2YJ_X8cmzw?pwd=swxl
 >
-> 提取码：swxl
+> pw：swxl
 
 ### Install
 [Installation Tutorial](https://github.com/PaddlePaddle/Paddle3D/blob/develop/docs/installation.md)
