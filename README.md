@@ -6,8 +6,8 @@
   |-configs
     |-gupnet_dla34_kitti.py      # 配置文件
   |-docs
-  	|-gupnet
-  	  |-README.md	         # 复现说明文档
+    |-gupnet
+      |-README.md	         # 复现说明文档
   |-paddle3d
     |-datasets
       |-kitti
@@ -52,5 +52,11 @@ $ python tools/evaluate.py --config configs/gupnet/gupnet_dla34_kitti.yml --batc
 Modify the `model` parameters to the weights you have trained
 
 ## Best result:
+Best car performance on the validation set:
+
+| Code | Venue | Easy | Moderate\* | Hard |
+| :--: | :---: | :--: | :------: | :--: |
+| [Official](https://github.com/SuperMHP/GUPNet) | ICCV'21 | 23.19 | 16.23 | 13.57 |
+| [repo](https://github.com/Xiaolong-RRL/paddle3d_gupnet) | ICCV'21 | 21.44 | 15.44 |12.84|
 
 <img src='./论文复现文档/images/best_result.png'>
