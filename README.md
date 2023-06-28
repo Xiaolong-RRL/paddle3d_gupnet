@@ -37,6 +37,8 @@
 >
 > 提取码：swxl
 
+### Install
+[Installation Tutorial](https://github.com/PaddlePaddle/Paddle3D/blob/develop/docs/installation.md)
 
 ## Train
 
