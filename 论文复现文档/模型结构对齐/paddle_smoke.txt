@@ -1,0 +1,269 @@
+DLA(
+  (base): DLABase(
+    (base_layer): Sequential(
+      (0): Conv2D(3, 16, kernel_size=[7, 7], padding=3, data_format=NCHW)
+      (1): GroupNorm(num_groups=16, num_channels=16, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level0): Sequential(
+      (0): Conv2D(16, 16, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (1): GroupNorm(num_groups=16, num_channels=16, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level1): Sequential(
+      (0): Conv2D(16, 32, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+      (1): GroupNorm(num_groups=32, num_channels=32, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level2): Tree(
+      (tree1): BasicBlock(
+        (conv1): Conv2D(32, 64, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        (norm1): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm2): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      )
+      (tree2): BasicBlock(
+        (conv1): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm1): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm2): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      )
+      (root): Root(
+        (conv): Conv2D(128, 64, kernel_size=[1, 1], data_format=NCHW)
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(32, 64, kernel_size=[1, 1], data_format=NCHW)
+        (1): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      )
+    )
+    (level3): Tree(
+      (tree1): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(64, 128, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(256, 128, kernel_size=[1, 1], data_format=NCHW)
+          (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+        )
+        (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+        (project): Sequential(
+          (0): Conv2D(64, 128, kernel_size=[1, 1], data_format=NCHW)
+          (1): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        )
+      )
+      (tree2): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(448, 128, kernel_size=[1, 1], data_format=NCHW)
+          (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+          (relu): ReLU()
+        )
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+    )
+    (level4): Tree(
+      (tree1): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(128, 256, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(512, 256, kernel_size=[1, 1], data_format=NCHW)
+          (norm): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+        )
+        (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+        (project): Sequential(
+          (0): Conv2D(128, 256, kernel_size=[1, 1], data_format=NCHW)
+          (1): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        )
+      )
+      (tree2): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm1): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (norm2): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(896, 256, kernel_size=[1, 1], data_format=NCHW)
+          (norm): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+          (relu): ReLU()
+        )
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+    )
+    (level5): Tree(
+      (tree1): BasicBlock(
+        (conv1): Conv2D(256, 512, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        (norm1): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm2): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+      )
+      (tree2): BasicBlock(
+        (conv1): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm1): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (norm2): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+      )
+      (root): Root(
+        (conv): Conv2D(1280, 512, kernel_size=[1, 1], data_format=NCHW)
+        (norm): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(256, 512, kernel_size=[1, 1], data_format=NCHW)
+        (1): GroupNorm(num_groups=32, num_channels=512, epsilon=1e-05)
+      )
+    )
+  )
+  (dla_up): DLAUp(
+    (ida_0): IDAUp(
+      (proj_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(512, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_1): Conv2DTranspose(256, 256, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=256, data_format=NCHW)
+      (node_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=256, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+    )
+    (ida_1): IDAUp(
+      (proj_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_1): Conv2DTranspose(128, 128, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=128, data_format=NCHW)
+      (node_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (proj_2): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_2): Conv2DTranspose(128, 128, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=128, data_format=NCHW)
+      (node_2): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=128, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+    )
+    (ida_2): IDAUp(
+      (proj_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_1): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_1): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (proj_2): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_2): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_2): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (proj_3): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+      (up_3): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_3): NormalConv(
+        (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+        (relu): ReLU()
+        (conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      )
+    )
+  )
+  (ida_up): IDAUp(
+    (proj_1): NormalConv(
+      (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      (relu): ReLU()
+      (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    )
+    (up_1): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+    (node_1): NormalConv(
+      (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      (relu): ReLU()
+      (conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    )
+    (proj_2): NormalConv(
+      (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      (relu): ReLU()
+      (conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    )
+    (up_2): Conv2DTranspose(64, 64, kernel_size=[8, 8], stride=[4, 4], padding=2, groups=64, data_format=NCHW)
+    (node_2): NormalConv(
+      (norm): GroupNorm(num_groups=32, num_channels=64, epsilon=1e-05)
+      (relu): ReLU()
+      (conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    )
+  )
+)

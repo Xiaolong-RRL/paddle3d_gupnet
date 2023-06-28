@@ -1,0 +1,298 @@
+GUPNET(
+  (backbone): GUP_DLA(
+    (base_layer): Sequential(
+      (0): Conv2D(3, 16, kernel_size=[7, 7], padding=3, data_format=NCHW)
+      (1): BatchNorm2D(num_features=16, momentum=0.9, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level0): Sequential(
+      (0): Conv2D(16, 16, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (1): BatchNorm2D(num_features=16, momentum=0.9, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level1): Sequential(
+      (0): Conv2D(16, 32, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+      (1): BatchNorm2D(num_features=32, momentum=0.9, epsilon=1e-05)
+      (2): ReLU()
+    )
+    (level2): Tree(
+      (tree1): BasicBlock(
+        (conv1): Conv2D(32, 64, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        (bn1): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn2): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+      )
+      (tree2): BasicBlock(
+        (conv1): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn1): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn2): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+      )
+      (root): Root(
+        (conv): Conv2D(128, 64, kernel_size=[1, 1], data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(32, 64, kernel_size=[1, 1], data_format=NCHW)
+        (1): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+      )
+    )
+    (level3): Tree(
+      (tree1): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(64, 128, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(256, 128, kernel_size=[1, 1], data_format=NCHW)
+          (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+        )
+        (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+        (project): Sequential(
+          (0): Conv2D(64, 128, kernel_size=[1, 1], data_format=NCHW)
+          (1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        )
+      )
+      (tree2): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(448, 128, kernel_size=[1, 1], data_format=NCHW)
+          (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+        )
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(64, 128, kernel_size=[1, 1], data_format=NCHW)
+        (1): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+      )
+    )
+    (level4): Tree(
+      (tree1): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(128, 256, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(512, 256, kernel_size=[1, 1], data_format=NCHW)
+          (bn): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+        )
+        (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+        (project): Sequential(
+          (0): Conv2D(128, 256, kernel_size=[1, 1], data_format=NCHW)
+          (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+      )
+      (tree2): Tree(
+        (tree1): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (tree2): BasicBlock(
+          (conv1): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+          (conv2): Conv2D(256, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+          (bn2): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (root): Root(
+          (conv): Conv2D(896, 256, kernel_size=[1, 1], data_format=NCHW)
+          (bn): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          (relu): ReLU()
+        )
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(128, 256, kernel_size=[1, 1], data_format=NCHW)
+        (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+      )
+    )
+    (level5): Tree(
+      (tree1): BasicBlock(
+        (conv1): Conv2D(256, 512, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        (bn1): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn2): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+      )
+      (tree2): BasicBlock(
+        (conv1): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn1): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+        (conv2): Conv2D(512, 512, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn2): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+      )
+      (root): Root(
+        (conv): Conv2D(1280, 512, kernel_size=[1, 1], data_format=NCHW)
+        (bn): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (downsample): MaxPool2D(kernel_size=2, stride=2, padding=0)
+      (project): Sequential(
+        (0): Conv2D(256, 512, kernel_size=[1, 1], data_format=NCHW)
+        (1): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+      )
+    )
+    (avgpool): AvgPool2D(kernel_size=7, stride=None, padding=0)
+    (fc): Conv2D(512, 1000, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (feat_up): GUP_DLAUp(
+    (ida_0): GUP_IDAUp(
+      (proj_1): Conv2d(
+        (conv): Conv2D(512, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_1): Conv2DTranspose(256, 256, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=256, data_format=NCHW)
+      (node_1): Conv2d(
+        (conv): Conv2D(512, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+    )
+    (ida_1): GUP_IDAUp(
+      (proj_1): Conv2d(
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_1): Conv2DTranspose(128, 128, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=128, data_format=NCHW)
+      (node_1): Conv2d(
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (proj_2): Conv2d(
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_2): Conv2DTranspose(128, 128, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=128, data_format=NCHW)
+      (node_2): Conv2d(
+        (conv): Conv2D(256, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+    )
+    (ida_2): GUP_IDAUp(
+      (proj_1): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_1): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_1): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (proj_2): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_2): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_2): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (proj_3): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+      (up_3): Conv2DTranspose(64, 64, kernel_size=[4, 4], stride=[2, 2], padding=1, groups=64, data_format=NCHW)
+      (node_3): Conv2d(
+        (conv): Conv2D(128, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (bn): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (relu): ReLU()
+      )
+    )
+  )
+  (heatmap): Sequential(
+    (0): Conv2D(64, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): ReLU()
+    (2): Conv2D(256, 3, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (offset_2d): Sequential(
+    (0): Conv2D(64, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): ReLU()
+    (2): Conv2D(256, 2, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (size_2d): Sequential(
+    (0): Conv2D(64, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): ReLU()
+    (2): Conv2D(256, 2, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (depth): Sequential(
+    (0): Conv2D(69, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+    (2): ReLU()
+    (3): AdaptiveAvgPool2D(output_size=1)
+    (4): Conv2D(256, 2, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (offset_3d): Sequential(
+    (0): Conv2D(69, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+    (2): ReLU()
+    (3): AdaptiveAvgPool2D(output_size=1)
+    (4): Conv2D(256, 2, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (size_3d): Sequential(
+    (0): Conv2D(69, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+    (2): ReLU()
+    (3): AdaptiveAvgPool2D(output_size=1)
+    (4): Conv2D(256, 4, kernel_size=[1, 1], data_format=NCHW)
+  )
+  (heading): Sequential(
+    (0): Conv2D(69, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (1): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+    (2): ReLU()
+    (3): AdaptiveAvgPool2D(output_size=1)
+    (4): Conv2D(256, 24, kernel_size=[1, 1], data_format=NCHW)
+  )
+)
